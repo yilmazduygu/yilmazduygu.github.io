@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My Professional Website</title>
+	<style>
+		:root {
+		--header-color: #A68365;
+  	--primary-color: #ADC8D9;
+  	--secondary-color: #88AABF;
+  	--accent-color: #A65233;
+  	--background-color: #F2D4C2;
+		--active-link-color: #f9f9f9;
+		}
+
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			background-color: #f0f0f0;
+		}
+
+		.container {
+			max-width: 960px;
+			margin: 0 auto;
+			padding: 20px;
+		}
+
+		header {
+			background-color: var(--header-color);
+			color: #fff;
+			padding: 20px;
+			text-align: center;
+		}
+
+		header h1 {
+			margin: 0;
+			font-size: 36px;
+			line-height: 1.2;
+		}
+
+		nav {
+			background-color: #fff;
+			border-radius: 5px;
+			box-shadow: 0 2px 5px rgba(0,0,0,.1);
+			margin: 20px 0;
+			overflow: hidden;
+		}
+
+		nav ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+
+		nav li {
+			float: left;
+			width: 25%;
+			text-align: center;
+			border-right: 1px solid #e5e5e5;
+			box-sizing: border-box;
+		}
+
+		nav li:last-child {
+			border-right: none;
+		}
+
+		nav a {
+			display: block;
+			padding: 20px;
+			color: #333;
+			text-decoration: none;
+		}
+
+		nav a:hover {
+			background-color: #f9f9f9;
+		}
+
+		/* Change the background color of the active link */
+	  nav a.active {
+	    background-color: var(--active-link-color);
+	  }
+
+		section {
+			background-color: #fff;
+			border-radius: 5px;
+			box-shadow: 0 2px 5px rgba(0,0,0,.1);
+			padding: 20px;
+			margin-bottom: 20px;
+			box-sizing: border-box;
+		}
+
+		section h2 {
+			margin-top: 0;
+			font-size: 24px;
+			line-height: 1.2;
+			margin-bottom: 10px;
+		}
+
+		section p {
+			margin-top: 0;
+			font-size: 16px;
+			line-height: 1.5;
+			margin-bottom: 20px;
+		}
+
+		section ul {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+
+		section li {
+			margin-bottom: 10px;
+			font-size: 16px;
+			line-height: 1.5;
+		}
+
+		footer {
+			background-color: var(--header-color);
+			color: #fff;
+			padding: 20px;
+			text-align: center;
+		}
+
+		footer p {
+			margin: 0;
+			font-size: 16px;
+			line-height: 1.5;
+		}
+
+		.photo {
+			display: block;
+			margin: 0 auto;
+			max-width: 300px;
+			border-radius: 50%;
+			overflow: hidden;
+			box-shadow: 0 2px 5px rgba(0,0,0,.1);
+		}
+
+		.tab-content {
+			display: none;
+		}
+
+		.tab-content.active {
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<header>
+			<h1>My Professional Website</h1>
+		</header>
+		<nav>
+		<ul>
+			<li><a href="#home-tab">Home</a></li>
+			<li><a href="#research-tab">Research</a></li>
+			<li><a href="#cv-tab">CV</a></li>
+			<li><a href="#personal-tab">About me</a></li>
+		</ul>
+	</nav>
+
+	<section id="home-tab" class="tab-content active">
+		<img src="young-vervet-monkey.png" alt="Duygu Yilmaz" class="photo">
+		<p>Welcome to my stupid little website. I am a PhD candidate in Neuroscience with experience in many many different things. This website serves as a platform for me to showcase my work and accomplishments, as well as share a bit about myself beyond my professional life.</p>
+	</section>
+
+	<section id="research-tab" class="tab-content">
+		<h2>Research</h2>
+		<ul>
+			<li>Publication 1</li>
+			<li>Publication 2</li>
+			<li>Publication 3</li>
+		</ul>
+	</section>
+
+	<section id="cv-tab" class="tab-content">
+		<h2>CV</h2>
+		<p>You can find my updated CV <a href="duyguyilmaz_CV.pdf">here</a>.</p>
+	</section>
+
+	<section id="personal-tab" class="tab-content">
+		<h2>About me</h2>
+		<p>When I'm not working, I enjoy sleeping. Here are a few of my favorite things:</p>
+		<ul>
+			<li>Favorite book: [insert book title and author]</li>
+			<li>Favorite movie: [insert movie title and director]</li>
+			<li>Favorite travel destination: [insert destination]</li>
+		</ul>
+	</section>
+
+	<footer>
+		<p>&copy; 2023 My Stupid Little Website.</p>
+	</footer>
+</div>
+
+<script>
+  // Add functionality to the navigation tabs
+  const navLinks = document.querySelectorAll('nav a');
+  const tabContents = document.querySelectorAll('.tab-content');
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', event => {
+      // Prevent the default behavior of the link
+      event.preventDefault();
+
+      // Remove the active class from all links and tab contents
+      navLinks.forEach(link => link.classList.remove('active'));
+      tabContents.forEach(tab => tab.classList.remove('active'));
+
+      // Add the active class to the clicked link and corresponding tab content
+      link.classList.add('active');
+      const targetTab = link.getAttribute('href');
+      document.querySelector(targetTab).classList.add('active');
+
+      // Add CSS to change the background color of the active link
+      const activeLink = document.querySelector('.active');
+      const nav = document.querySelector('nav');
+      nav.style.setProperty('--active-link-color', getComputedStyle(activeLink).backgroundColor);
+    })
+  });
+</script>
